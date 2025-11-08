@@ -1,0 +1,109 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    color: #e2d1fa;
+    background: linear-gradient(135deg, #251733 0%, #181925 85%, #111015 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.container {
+    max-width: 1000px;
+    width: 90%;
+    margin: auto;
+    padding: 50px 0 0 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0.3em;
+    margin-top: 3em;
+    line-height: 1.1em;
+}
+h1 span {
+    color: #a07fc2; /* Menos chillante que el anterior */
+}
+.subtitle {
+    color: #bfa8e7;
+    font-size: 1.2em;
+    margin-bottom: 2em;
+}
+.btn-group {
+    margin-bottom: 2.5em;
+}
+.btn {
+    padding: 0.8em 2.2em;
+    margin: 0 1em;
+    border-radius: 8px;
+    background: #a07fc2;
+    color: #181925;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.12em;
+    border: none;
+    box-shadow: 0 2px 8px #a07fc255;
+    transition: background 0.3s;
+    display: inline-block;
+}
+.btn:hover {
+    background: #8b6cb0;
+}
+.btn-secondary {
+    background: transparent !important;
+    color: #e2d1fa !important;
+    border: 2px solid #a07fc2;
+    box-shadow: none;
+}
+.btn-secondary:hover {
+    background: #a07fc2 !important;
+    color: #181925 !important;
+    border-color: #a07fc2;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 3em;
+    flex-wrap: nowrap;
+}
+
+.feature-card {
+    background: #222339;
+    padding: 2em 1em;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px #a07fc222; /* Mucho menos chillante */
+    width: 210px;
+    min-width: 180px;
+    text-align: center;
+    margin: 0;
+    transition: box-shadow 0.3s;
+}
+.feature-card img {
+    width: 40px;
+    margin-bottom: 1em;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(360deg) brightness(100%) contrast(100%);
+}
+.feature-card h3,
+.feature-card p {
+    color: #fff;
+}
+.feature-card h3 {
+    font-weight: 600;
+    margin-bottom: 0.7em;
+    color: #a07fc2; /* Títulos secundarios menos chillantes */
+}
+.feature-card p {
+    font-size: 0.99em;
+    line-height: 1.3em;
+    opacity: 0.95;
+    color: #fff;
+}

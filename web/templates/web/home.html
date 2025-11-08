@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido a MultiParking</title>
+    <link rel="stylesheet" href="{% static 'web/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a <span>MultiParking</span></h1>
+        <p class="subtitle">
+            Parqueadero inteligente hecho simple. Gestiona tu espacio, reserva con anticipación, ingresa con QR y paga digitalmente.
+        </p>
+        <div class="btn-group">
+            <a href="{% url 'login' %}" class="btn">Iniciar Sesión</a>
+            <a href="{% url 'register' %}" class="btn btn-secondary">Crear Cuenta</a>
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <img src="{% static 'web/icons/qr.svg' %}" alt="QR">
+                <h3>Sistema de Entrada QR</h3>
+                <p>Entra y sal con códigos QR seguros generados instantáneamente</p>
+            </div>
+            <div class="feature-card">
+                <img src="{% static 'web/icons/car.svg' %}" alt="Seguimiento">
+                <h3>Seguimiento de Vehículos</h3>
+                <p>Monitoreo en tiempo real de todos los vehículos en el parqueadero</p>
+            </div>
+            <div class="feature-card">
+                <img src="{% static 'web/icons/payment.svg' %}" alt="Pagos Digitales">
+                <h3>Pagos Digitales</h3>
+                <p>Facturación automática y procesamiento seguro de pagos digitales</p>
+            </div>
+            <div class="feature-card">
+                <img src="{% static 'web/icons/shield.svg' %}" alt="Acceso por Roles">
+                <h3>Acceso por Roles</h3>
+                <p>Paneles personalizados para administradores, guardias y residentes</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
