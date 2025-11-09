@@ -1,7 +1,8 @@
 <div id="register-modal"
      class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 overflow-y-auto transition-all duration-200">
+
   {% if registro_exitoso %}
-    <!-- POPUP ÉXITO -->
+    <!-- ✅ POPUP DE ÉXITO -->
     <div class="bg-green-700 text-white rounded-xl px-6 py-5 shadow-xl text-center flex flex-col items-center max-w-sm w-full mx-4 animate-fade-in">
       <svg class="w-10 h-10 mb-3 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -11,20 +12,25 @@
     </div>
 
     <script>
-      setTimeout(function(){
-        const modal = document.getElementById('register-modal');
-        modal.classList.add('hidden');
-        // Limpia el flag de la URL para evitar repetir el popup
-        if (window.location.search.includes("registro_exitoso=1")) {
+      document.addEventListener("DOMContentLoaded", function() {
+        const modal = document.getElementById("register-modal");
+
+        // Muestra el modal al llegar con registro_exitoso
+        modal.classList.remove("hidden");
+
+        // Oculta después de 2s y limpia la URL
+        setTimeout(function(){
+          modal.classList.add("hidden");
           window.history.replaceState({}, document.title, window.location.pathname);
-        }
-      }, 2000);
+        }, 2000);
+      });
     </script>
 
   {% else %}
-    <!-- FORMULARIO DE REGISTRO -->
+    <!-- 🧾 FORMULARIO DE REGISTRO -->
     <div class="bg-[#191925] rounded-xl shadow-xl border border-[#282045] p-4 sm:p-8 w-full max-w-xs sm:max-w-md md:max-w-xl text-white relative m-2 sm:m-0">
       <button id="close-modal" class="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-400 hover:text-purple-400 text-xl">&times;</button>
+
       <div class="flex items-center gap-2 mb-2">
         <svg class="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="9" cy="8" r="4" stroke="currentColor"/>
@@ -33,7 +39,10 @@
         </svg>
         <h2 class="text-base sm:text-xl font-bold text-white">Crear Cuenta</h2>
       </div>
-      <p class="text-xs sm:text-base text-gray-400 mb-6 text-center">Regístrate para acceder a tu parqueadero</p>
+
+      <p class="text-xs sm:text-base text-gray-400 mb-6 text-center">
+        Regístrate para acceder a tu parqueadero
+      </p>
 
       {% if error_registro %}
         <div class="bg-red-700 text-white font-semibold p-2 mb-4 rounded-lg text-center">
@@ -50,9 +59,7 @@
             </label>
             {{ field }}
             {% if field.errors %}
-              <div class="text-red-400 mt-1 text-xs">
-                {{ field.errors|striptags }}
-              </div>
+              <div class="text-red-400 mt-1 text-xs">{{ field.errors|striptags }}</div>
             {% endif %}
           </div>
         {% endfor %}
@@ -74,8 +81,41 @@
 
       <div class="text-center text-xs sm:text-sm mt-5 text-gray-400">
         ¿Ya tienes cuenta?
-        <a href="{% url 'login' %}" class="text-purple-400 hover:underline">Inicia sesión aquí</a>
+        <a href="#" id="open-login-from-register" class="text-purple-400 hover:underline">Inicia sesión aquí</a>
       </div>
     </div>
   {% endif %}
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("register-modal");
+  const closeBtn = document.getElementById("close-modal");
+  const openLoginFromRegister = document.getElementById("open-login-from-register");
+  const form = document.getElementById("form-registro");
+
+  // Permite cerrar el modal al hacer clic fuera o en la X
+  if (modal && closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+      if (form) form.reset(); // limpia campos
+    });
+    modal.addEventListener("mousedown", (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+        if (form) form.reset();
+      }
+    });
+  }
+
+  // Abrir login desde el registro
+  if (openLoginFromRegister) {
+    openLoginFromRegister.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.classList.add("hidden");
+      const loginModal = document.getElementById("login-modal");
+      if (loginModal) loginModal.classList.remove("hidden");
+    });
+  }
+});
+</script>

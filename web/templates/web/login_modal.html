@@ -1,35 +1,60 @@
-<!-- Modal Iniciar Sesión (oculto por defecto) -->
-<div id="login-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
-  <div class="bg-[#191925] rounded-xl shadow-xl p-6 sm:p-8 w-full max-w-xs sm:max-w-md md:max-w-xl text-white border border-[#282045] relative m-4 sm:m-0">
-    <!-- Botón cerrar -->
-    <button id="close-login-modal" class="absolute top-3 right-3 text-gray-400 hover:text-purple-400 text-xl" type="button">&times;</button>
+<div id="login-modal"
+     class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 overflow-y-auto transition-all duration-200">
+
+  <div class="bg-[#191925] rounded-xl shadow-xl border border-[#282045] p-6 sm:p-8 w-full max-w-xs sm:max-w-md md:max-w-xl text-white relative m-2 sm:m-0">
+    <button id="close-login-modal"
+            class="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-400 hover:text-purple-400 text-xl">&times;</button>
+
+    <!-- HEADER -->
     <div class="flex items-center gap-2 mb-2">
-      <!-- Icono login (heroicon) -->
-      <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M16 17v1a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h6a3 3 0 013 3v1"/>
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M10 11h8m0 0-3-3m3 3-3 3"/>
+      <svg class="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4" />
+        <path d="M6 21v-2a6 6 0 0112 0v2" stroke="currentColor" />
       </svg>
       <h2 class="text-base sm:text-xl font-bold text-white">Iniciar Sesión</h2>
     </div>
-    <p class="text-gray-400 mb-6 text-sm sm:text-base">Ingresa tus datos para acceder a MultiParking</p>
-    <form>
+
+    <p class="text-xs sm:text-base text-gray-400 mb-6 text-center">Ingresa tus credenciales para acceder</p>
+
+    <!-- MENSAJE DE ERROR -->
+    {% if login_error %}
+      <div class="bg-red-700 text-white font-semibold p-2 mb-4 rounded-lg text-center shadow-md">
+        {{ login_error }}
+      </div>
+    {% endif %}
+
+    <!-- FORMULARIO DE LOGIN -->
+    <form method="POST" action="{% url 'login' %}" autocomplete="off">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="login">
+
       <div class="mb-4">
-        <label class="block text-sm font-semibold mb-1">Correo o Documento</label>
-        <input type="text" class="w-full bg-[#231f36] border border-[#413768] rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder-gray-500 transition text-base" placeholder="ej: usuario@email.com o documento">
+        <label for="correo" class="block text-xs sm:text-sm font-semibold mb-1">Correo</label>
+        <input type="email" name="correo" id="correo"
+               class="w-full p-2 rounded bg-[#231b36] text-white border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
+               placeholder="ejemplo@correo.com"
+               required>
       </div>
-      <div class="mb-6">
-        <label class="block text-sm font-semibold mb-1">Contraseña</label>
-        <input type="password" class="w-full bg-[#231f36] border border-[#413768] rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-400 placeholder-gray-500 transition text-base" placeholder="••••••••">
+
+      <div class="mb-4">
+        <label for="clave" class="block text-xs sm:text-sm font-semibold mb-1">Contraseña</label>
+        <input type="password" name="clave" id="clave"
+               class="w-full p-2 rounded bg-[#231b36] text-white border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
+               placeholder="••••••••"
+               required>
       </div>
-      <button type="submit" class="w-full flex justify-center items-center gap-2 bg-purple-400 hover:bg-purple-500 text-[#191925] font-bold py-3 rounded-lg text-base transition">
+
+      <button type="submit"
+        class="w-full flex justify-center items-center gap-2 bg-purple-400 hover:bg-purple-500 text-[#191925] font-bold py-2 sm:py-3 rounded-md sm:rounded-lg text-base sm:text-lg transition duration-150 ease-in-out">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M10 11h8m0 0-3-3m3 3-3 3"/>
+          <circle cx="12" cy="7" r="4" />
+          <path d="M6 21v-2a6 6 0 0112 0v2" />
         </svg>
         Iniciar Sesión
       </button>
     </form>
+
+    <!-- FOOTER -->
     <div class="text-center text-xs sm:text-sm mt-5 text-gray-400">
       ¿No tienes cuenta?
       <a href="#" id="open-register-from-login" class="text-purple-400 hover:underline">Regístrate aquí</a>

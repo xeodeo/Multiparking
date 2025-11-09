@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Vigilante</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#120c19] via-[#171423] to-black text-white">
+  <header class="w-full border-b border-purple-800/30 bg-[#1d1630]">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold text-green-400">Panel Vigilante</h1>
+      <nav class="flex items-center gap-4 text-sm">
+        <a href="/" class="hover:text-purple-300 transition">Inicio</a>
+        <a href="{% url 'panel_vigilante' %}" class="text-green-400 font-semibold">Panel</a>
+        <a href="{% url 'logout' %}" class="text-red-400 hover:text-red-300">Cerrar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-5 py-10">
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold mb-2">Hola Vigilante, {{ usuario }}</h2>
+      <p class="text-gray-300">Aquí puedes gestionar accesos, novedades y monitorear parqueos activos.</p>
+    </div>
+
+    <!-- Acciones rápidas -->
+    <section class="grid gap-6 md:grid-cols-3">
+      <div class="bg-[#211b32] border border-purple-800/30 rounded-xl p-5 shadow-lg">
+        <h3 class="font-semibold text-lg mb-2 text-purple-300">Parqueos activos</h3>
+        <p class="text-sm text-gray-300">Consulta rápidamente los vehículos dentro.</p>
+        <button class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-md text-sm">Ver parqueos</button>
+      </div>
+      <div class="bg-[#211b32] border border-purple-800/30 rounded-xl p-5 shadow-lg">
+        <h3 class="font-semibold text-lg mb-2 text-purple-300">Registrar novedad</h3>
+        <p class="text-sm text-gray-300">Reporta incidentes o eventos relevantes.</p>
+        <button class="mt-3 w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-2 rounded-md text-sm">Nueva novedad</button>
+      </div>
+      <div class="bg-[#211b32] border border-purple-800/30 rounded-xl p-5 shadow-lg">
+        <h3 class="font-semibold text-lg mb-2 text-purple-300">Historial</h3>
+        <p class="text-sm text-gray-300">Revisa acciones recientes del sistema.</p>
+        <button class="mt-3 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-md text-sm">Ver logs</button>
+      </div>
+    </section>
+
+    <!-- Placeholder de tabla -->
+    <section class="mt-10">
+      <h3 class="text-xl font-bold mb-4 text-purple-300">Parqueos (vista rápida)</h3>
+      <div class="overflow-x-auto rounded-lg border border-purple-800/30">
+        <table class="min-w-full text-sm">
+          <thead class="bg-[#281e40] text-purple-200">
+            <tr>
+              <th class="px-4 py-3 text-left">Placa</th>
+              <th class="px-4 py-3 text-left">Espacio</th>
+              <th class="px-4 py-3 text-left">Entrada</th>
+              <th class="px-4 py-3 text-left">Acción</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-purple-800/30">
+            <tr>
+              <td class="px-4 py-3">ABC123</td>
+              <td class="px-4 py-3">P1-12</td>
+              <td class="px-4 py-3">2025-11-09 14:32</td>
+              <td class="px-4 py-3">
+                <button class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs">Cerrar</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">FGT890</td>
+              <td class="px-4 py-3">P2-08</td>
+              <td class="px-4 py-3">2025-11-09 15:05</td>
+              <td class="px-4 py-3">
+                <button class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs">Cerrar</button>
+              </td>
+            </tr>
+            <!-- Reemplaza con tu loop real -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-16 py-6 text-center text-xs text-gray-500">
+    MultiParking © 2025
+  </footer>
+</body>
+</html>

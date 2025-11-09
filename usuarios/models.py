@@ -15,8 +15,6 @@ class Usuario(models.Model):
     usuFechaRegistro = models.DateTimeField(auto_now_add=True)
     fkIdRol = models.ForeignKey(Rol, on_delete=models.CASCADE, default= 2)
     
-    class Meta:
-        db_table = 'usuarios'
 
     def __str__(self):
         return f"{self.usuNombreCompleto} ({self.usuDocumento}) - {self.fkIdRol.rolTipoRol}"

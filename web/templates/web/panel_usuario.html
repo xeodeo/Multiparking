@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Usuario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#100d17] via-[#181925] to-black text-white">
+
+  <header class="w-full border-b border-purple-800/30 bg-[#1d1630]">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold text-blue-400">Panel Usuario</h1>
+      <nav class="flex items-center gap-4 text-sm">
+        <a href="/" class="hover:text-purple-300 transition">Inicio</a>
+        <a href="{% url 'panel_usuario' %}" class="text-blue-400 font-semibold">Mi Panel</a>
+        <a href="{% url 'logout' %}" class="text-red-400 hover:text-red-300">Cerrar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-5 py-10">
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold mb-2">Hola Usuario, {{ usuario }}</h2>
+      <p class="text-gray-300">Aquí puedes ver tus reservas, vehículos y pagos.</p>
+    </div>
+
+    <!-- Acciones principales -->
+    <section class="grid gap-6 md:grid-cols-3">
+      <div class="bg-[#211b32] border border-purple-800/30 rounded-xl p-5 shadow-lg">
+        <h3 class="font-semibold text-lg mb-2 text-purple-300">Mis Vehículos</h3>
+        <p class="text-sm text-gray-300">Gestiona los vehículos registrados.</p>
+        <button class="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md text-sm">Ver vehículos</button>
+      </div>
+      <div class="bg-[#211b32] border border-purple-800/30 rounded-xl p-5 shadow-lg">
+        <h3 class="font-semibold text-lg mb-2 text-purple-300">Reservar Espacio</h3>
+        <p class="text-sm text-gray-300">Realiza una nueva reserva.</p>
+        <button class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-md text-sm">Nueva reserva</button>
+      </div>
+      <div class="bg-[#211b32] border border-purple-800/30 rounded-xl p-5 shadow-lg">
+        <h3 class="font-semibold text-lg mb-2 text-purple-300">Historial Pagos</h3>
+        <p class="text-sm text-gray-300">Revisa tus transacciones realizadas.</p>
+        <button class="mt-3 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-md text-sm">Ver pagos</button>
+      </div>
+    </section>
+
+    <!-- Placeholder reservas -->
+    <section class="mt-10">
+      <h3 class="text-xl font-bold mb-4 text-purple-300">Reservas Recientes</h3>
+      <div class="overflow-x-auto rounded-lg border border-purple-800/30">
+        <table class="min-w-full text-sm">
+          <thead class="bg-[#281e40] text-purple-200">
+            <tr>
+              <th class="px-4 py-3 text-left">Fecha</th>
+              <th class="px-4 py-3 text-left">Inicio</th>
+              <th class="px-4 py-3 text-left">Estado</th>
+              <th class="px-4 py-3 text-left">Acción</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-purple-800/30">
+            <tr>
+              <td class="px-4 py-3">2025-11-11</td>
+              <td class="px-4 py-3">08:00</td>
+              <td class="px-4 py-3"><span class="text-green-400">RESERVADO</span></td>
+              <td class="px-4 py-3">
+                <button class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs">Cancelar</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">2025-11-12</td>
+              <td class="px-4 py-3">14:00</td>
+              <td class="px-4 py-3"><span class="text-yellow-400">PENDIENTE</span></td>
+              <td class="px-4 py-3">
+                <button class="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded text-xs">Ver</button>
+              </td>
+            </tr>
+            <!-- Reemplaza con tu loop real -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-16 py-6 text-center text-xs text-gray-500">
+    MultiParking © 2025
+  </footer>
+</body>
+</html>
