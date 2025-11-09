@@ -49,7 +49,11 @@ INSTALLED_APPS = [
     'novedades',
     'logs',
     'web',
+    'tailwind',
+    'theme',
 ]
+
+TAILWIND_APP_NAME = "theme"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

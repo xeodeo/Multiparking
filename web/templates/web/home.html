@@ -2,42 +2,153 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Bienvenido a MultiParking</title>
-    <link rel="stylesheet" href="{% static 'web/style.css' %}">
+  <meta charset="UTF-8">
+  <title>Bienvenido a MultiParking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <h1>Bienvenido a <span>MultiParking</span></h1>
-        <p class="subtitle">
-            Parqueadero inteligente hecho simple. Gestiona tu espacio, reserva con anticipación, ingresa con QR y paga digitalmente.
-        </p>
-        <div class="btn-group">
-            <a href="{% url 'login' %}" class="btn">Iniciar Sesión</a>
-            <a href="{% url 'register' %}" class="btn btn-secondary">Crear Cuenta</a>
-        </div>
-        <div class="features">
-            <div class="feature-card">
-                <img src="{% static 'web/icons/qr.svg' %}" alt="QR">
-                <h3>Sistema de Entrada QR</h3>
-                <p>Entra y sal con códigos QR seguros generados instantáneamente</p>
-            </div>
-            <div class="feature-card">
-                <img src="{% static 'web/icons/car.svg' %}" alt="Seguimiento">
-                <h3>Seguimiento de Vehículos</h3>
-                <p>Monitoreo en tiempo real de todos los vehículos en el parqueadero</p>
-            </div>
-            <div class="feature-card">
-                <img src="{% static 'web/icons/payment.svg' %}" alt="Pagos Digitales">
-                <h3>Pagos Digitales</h3>
-                <p>Facturación automática y procesamiento seguro de pagos digitales</p>
-            </div>
-            <div class="feature-card">
-                <img src="{% static 'web/icons/shield.svg' %}" alt="Acceso por Roles">
-                <h3>Acceso por Roles</h3>
-                <p>Paneles personalizados para administradores, guardias y residentes</p>
-            </div>
-        </div>
+<body class="min-h-screen bg-gradient-to-br from-[#1c1127] via-[#181925] to-black">
+
+  <div class="w-full max-w-4xl mx-auto py-10 px-4 sm:px-6 flex flex-col items-center justify-center min-h-screen text-center">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 mt-8 text-purple-400">
+      Bienvenido a <span class="text-purple-700">MultiParking</span>
+    </h1>
+    <p class="text-base sm:text-lg md:text-xl text-purple-200 mb-8 font-medium">
+      Parqueadero inteligente hecho simple. Gestiona tu espacio, reserva con anticipación, ingresa con QR y paga digitalmente.
+    </p>
+
+    <div class="mb-8 sm:mb-10 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 w-full">
+      <a href="#" id="open-login"
+         class="w-full sm:w-auto px-6 py-3 rounded-lg bg-purple-700 text-white font-semibold shadow transition hover:bg-purple-800 flex justify-center items-center gap-2 text-base sm:text-lg">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M15 12H3M15 12l-3-3m3 3l-3 3" />
+        </svg>
+        Iniciar Sesión
+      </a>
+
+      <a href="#" id="open-register"
+         class="w-full sm:w-auto px-6 py-3 rounded-lg text-white border-2 border-purple-700 font-semibold transition bg-transparent hover:bg-purple-700 hover:text-white flex justify-center items-center gap-2 text-base sm:text-lg">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 4v16m8-8H4" />
+        </svg>
+        Crear Cuenta
+      </a>
     </div>
+
+    <!-- Tarjetas -->
+    <div class="flex flex-col sm:flex-row flex-wrap sm:flex-nowrap justify-center items-stretch gap-4 sm:gap-6 mt-6 w-full">
+      <div class="bg-[#211b32] rounded-xl shadow-md shadow-purple-900/10 p-5 sm:p-7 w-full sm:w-[200px] flex flex-col items-center mb-2 sm:mb-0">
+        <svg class="w-10 h-10 sm:w-11 sm:h-11 mb-3" fill="#a07fc2" stroke="#a07fc2" viewBox="0 -0.09 122.88 122.88" xmlns="http://www.w3.org/2000/svg">
+          <g><path d="M0.18,0h44.63v44.45H0.18V0z M111.5,111.5h11.38v11.2H111.5V111.5z"/></g>
+        </svg>
+        <h3 class="text-white font-semibold mb-1 text-base sm:text-lg">Sistema de Entrada QR</h3>
+        <p class="text-white text-sm sm:text-base opacity-90 font-normal">
+          Entra y sal con códigos QR seguros generados instantáneamente
+        </p>
+      </div>
+
+      <div class="bg-[#211b32] rounded-xl shadow-md shadow-purple-900/10 p-5 sm:p-7 w-full sm:w-[200px] flex flex-col items-center mb-2 sm:mb-0">
+        <svg class="w-10 h-10 sm:w-11 sm:h-11 mb-3 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="3" y="11" width="18" height="6" rx="3" stroke="currentColor" />
+          <circle cx="7" cy="19" r="2" stroke="currentColor"/>
+          <circle cx="17" cy="19" r="2" stroke="currentColor"/>
+        </svg>
+        <h3 class="text-white font-semibold mb-1 text-base sm:text-lg">Seguimiento de Vehículos</h3>
+        <p class="text-white text-sm sm:text-base opacity-90 font-normal">
+          Monitoreo en tiempo real de todos los vehículos en el parqueadero
+        </p>
+      </div>
+
+      <div class="bg-[#211b32] rounded-xl shadow-md shadow-purple-900/10 p-5 sm:p-7 w-full sm:w-[200px] flex flex-col items-center mb-2 sm:mb-0">
+        <svg class="w-10 h-10 sm:w-11 sm:h-11 mb-3 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="2" y="7" width="20" height="10" rx="2" stroke="currentColor"/>
+          <path d="M2 10 h20" stroke="currentColor"/>
+        </svg>
+        <h3 class="text-white font-semibold mb-1 text-base sm:text-lg">Pagos Digitales</h3>
+        <p class="text-white text-sm sm:text-base opacity-90 font-normal">
+          Facturación automática y procesamiento seguro de pagos digitales
+        </p>
+      </div>
+
+      <div class="bg-[#211b32] rounded-xl shadow-md shadow-purple-900/10 p-5 sm:p-7 w-full sm:w-[200px] flex flex-col items-center">
+        <svg class="w-10 h-10 sm:w-11 sm:h-11 mb-3 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 2l7 4v4c0 7.732-7 12-7 12S5 17.732 5 10V6l7-4z" stroke="currentColor"/>
+        </svg>
+        <h3 class="text-white font-semibold mb-1 text-base sm:text-lg">Acceso por Roles</h3>
+        <p class="text-white text-sm sm:text-base opacity-90 font-normal">
+          Paneles personalizados para administradores, guardias y residentes
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {% include 'web/register_modal.html' %}
+  {% include 'web/login_modal.html' %}
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const openRegisterBtn = document.getElementById('open-register');
+    const registerModal = document.getElementById('register-modal');
+    const closeRegisterBtn = document.getElementById('close-modal');
+
+    const openLoginBtn = document.getElementById('open-login');
+    const loginModal = document.getElementById('login-modal');
+    const closeLoginBtn = document.getElementById('close-login-modal');
+    const openRegisterFromLogin = document.getElementById('open-register-from-login');
+
+    function openRegistroModal() {
+      if (window.location.search.includes("registro_exitoso=1")) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+      registerModal.classList.remove('hidden');
+    }
+
+    if (openRegisterBtn && registerModal && closeRegisterBtn) {
+      openRegisterBtn.onclick = function(e) {
+        e.preventDefault();
+        openRegistroModal();
+      };
+      closeRegisterBtn.onclick = function() {
+        registerModal.classList.add('hidden');
+      };
+      registerModal.addEventListener('mousedown', function(e) {
+        if (e.target === registerModal) registerModal.classList.add('hidden');
+      });
+    }
+
+    if (openLoginBtn && loginModal && closeLoginBtn) {
+      openLoginBtn.onclick = function(e) {
+        e.preventDefault();
+        loginModal.classList.remove('hidden');
+      };
+      closeLoginBtn.onclick = function() {
+        loginModal.classList.add('hidden');
+      };
+      loginModal.addEventListener('mousedown', function(e) {
+        if (e.target === loginModal) loginModal.classList.add('hidden');
+      });
+    }
+
+    if (openRegisterFromLogin && loginModal && registerModal) {
+      openRegisterFromLogin.onclick = function(e) {
+        e.preventDefault();
+        loginModal.classList.add('hidden');
+        openRegistroModal();
+      };
+    }
+  });
+  </script>
+
+  {% if mostrar_modal_registro %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const registerModal = document.getElementById('register-modal');
+      if (registerModal) {
+        registerModal.classList.remove('hidden');
+      }
+    });
+  </script>
+  {% endif %}
+
 </body>
 </html>

@@ -13,7 +13,10 @@ class Usuario(models.Model):
     usuClaveHash = models.CharField(max_length=255)
     usuEstado = models.CharField(max_length=8, choices=ESTADO_CHOICES, default='ACTIVO')
     usuFechaRegistro = models.DateTimeField(auto_now_add=True)
-    fkIdRol = models.ForeignKey(Rol, on_delete=models.CASCADE)
+    fkIdRol = models.ForeignKey(Rol, on_delete=models.CASCADE, default= 2)
+    
+    class Meta:
+        db_table = 'usuarios'
 
     def __str__(self):
         return f"{self.usuNombreCompleto} ({self.usuDocumento}) - {self.fkIdRol.rolTipoRol}"
